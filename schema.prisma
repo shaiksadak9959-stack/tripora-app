@@ -1,0 +1,73 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  phone     String?  @unique
+  image     String?
+  role      UserRole @default(USER)
+  points    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings  Booking[]
+  pointLogs PointLog[]
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  reference String        @unique
+  userId    String
+  type      BookingType
+  status    BookingStatus @default(PENDING)
+  amount    Int
+  currency  String        @default("INR")
+  details   Json
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PointLog {
+  id        String   @id @default(cuid())
+  userId    String
+  points    Int
+  reason    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Coupon {
+  id        String    @id @default(cuid())
+  code      String    @unique
+  discount  Int
+  active    Boolean   @default(true)
+  expiresAt DateTime?
+  createdAt DateTime  @default(now())
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum BookingType {
+  FLIGHT
+  TRAIN
+  BUS
+  HOTEL
+  VISA
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  REFUNDED
+}

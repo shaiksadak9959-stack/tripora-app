@@ -1,0 +1,26 @@
+```json
+{
+  "name": "weather-server",
+  "version": "1.0.0",
+  "description": "A hello world MCP server",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "npm run build && npm run start",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "express": "^4.18.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.3.0",
+    "typescript": "^5.5.0"
+  },
+  "type": "module"
+}
+```

@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --tripora-blue: #1769e8;
+  --tripora-dark: #081d3b;
+  --tripora-cyan: #38bdf8;
+  --text: #10233f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f6f9fd;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1180px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.hero {
+  background:
+    linear-gradient(
+      135deg,
+      #081d3b 0%,
+      #1769e8 58%,
+      #38bdf8 100%
+    );
+  color: white;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5ebf3;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(20, 50, 90, 0.08);
+}
+
+.tab {
+  padding: 12px 17px;
+  border-radius: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: #eaf3ff;
+  color: var(--tripora-blue);
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d7e1ee;
+  border-radius: 12px;
+  background: white;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--tripora-blue);
+  box-shadow: 0 0 0 3px rgba(23, 105, 232, 0.1);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 19px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 0;
+}
+
+.btn-primary {
+  background: var(--tripora-blue);
+  color: white;
+}
+
+.btn-light {
+  background: white;
+  color: var(--text);
+}
